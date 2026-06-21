@@ -354,16 +354,12 @@
     <div class="wrap">
       <div class="sec-title reveal">Get in touch</div>
       <div class="contact-wrap">
-        <form class="panel contactform reveal" action="https://formsubmit.co/epiphathan@gmail.com" method="POST">
+        <form class="panel contactform reveal" id="contactForm">
           <h3>Let's talk.</h3>
-          <p class="sub">Send a message and it lands straight in my inbox. I reply fast.</p>
-          <input type="hidden" name="_subject" value="New message from your portfolio site" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="text" name="_honey" style="display:none" />
-          <div class="field"><label>Your name</label><input type="text" name="name" placeholder="Jane Recruiter" required /></div>
-          <div class="field"><label>Your email</label><input type="email" name="email" placeholder="you@company.com" required /></div>
-          <div class="field"><label>Message</label><textarea name="message" placeholder="Hi Tobi — we have a role that looks like a great fit…" required></textarea></div>
+          <p class="sub">Fill this in and hit send — it opens your email app with the message ready to fire off to me.</p>
+          <div class="field"><label>Your name</label><input type="text" id="cfName" name="name" placeholder="Jane Recruiter" required /></div>
+          <div class="field"><label>Your email</label><input type="email" id="cfEmail" name="email" placeholder="you@company.com" required /></div>
+          <div class="field"><label>Message</label><textarea id="cfMsg" name="message" placeholder="Hi Tobi — we have a role that looks like a great fit…" required></textarea></div>
           <button class="btn primary" type="submit" style="width:100%; justify-content:center;">Send message →</button>
         </form>
 
@@ -443,6 +439,20 @@
         try { await navigator.clipboard.writeText(btn.dataset.copy); showToast('Copied: ' + btn.dataset.copy); }
         catch { showToast('Copy failed — ' + btn.dataset.copy); }
       });
+    });
+
+    /* Contact form -> open visitor's email app, pre-addressed to Tobi */
+    const cf = document.getElementById('contactForm');
+    if (cf) cf.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('cfName').value || '').trim();
+      const from = (document.getElementById('cfEmail').value || '').trim();
+      const msg  = (document.getElementById('cfMsg').value || '').trim();
+      const subject = name ? `Portfolio enquiry from ${name}` : 'Portfolio enquiry';
+      const body = `${msg}\n\n— ${name}${from ? `\nReply to: ${from}` : ''}`;
+      const href = `mailto:epiphathan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showToast('Opening your email app…');
+      window.location.href = href;
     });
 
     /* Starfield */
