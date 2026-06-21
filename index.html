@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tobi Nathan Owonubi — Software Engineer</title>
+  <meta name="description" content="Tobi Nathan Owonubi — Software Engineer, AI & LLM enthusiast. Full-stack web, data pipelines, and AI-integrated features." />
+  <meta property="og:title" content="Tobi Nathan Owonubi — Software Engineer" />
+  <meta property="og:description" content="Full-stack engineer building web products, data pipelines & AI-integrated features." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #05060d;
+      --card: rgba(20, 26, 48, 0.55);
+      --border: rgba(124, 156, 255, 0.18);
+      --text: #eaf0ff;
+      --muted: #97a3c4;
+      --accent: #5eead4;
+      --accent-2: #a78bfa;
+      --accent-3: #60a5fa;
+      --max: 1040px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .brand, .role { font-family: 'Space Grotesk', sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: #fff; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ===== Cosmic background layers ===== */
+    #stars { position: fixed; inset: 0; z-index: 0; display: block; }
+    .nebula {
+      position: fixed; border-radius: 50%; filter: blur(90px); opacity: .55; z-index: 0;
+      pointer-events: none; will-change: transform;
+    }
+    .nebula.a { width: 520px; height: 520px; top: -160px; left: -120px;
+      background: radial-gradient(circle, rgba(167,139,250,.55), transparent 70%); animation: drift1 22s ease-in-out infinite; }
+    .nebula.b { width: 600px; height: 600px; top: 30%; right: -200px;
+      background: radial-gradient(circle, rgba(94,234,212,.40), transparent 70%); animation: drift2 28s ease-in-out infinite; }
+    .nebula.c { width: 480px; height: 480px; bottom: -180px; left: 25%;
+      background: radial-gradient(circle, rgba(96,165,250,.42), transparent 70%); animation: drift3 25s ease-in-out infinite; }
+    @keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
+    @keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,30px)} }
+    @keyframes drift3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-50px)} }
+
+    /* ===== Nav ===== */
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(5,6,13,0.55);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; padding-top:0; padding-bottom:0; }
+    nav .brand { font-weight: 700; font-size: 18px; letter-spacing: .5px; }
+    nav .brand span { background: linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    nav .links { display: flex; gap: 26px; }
+    nav .links a { color: var(--muted); font-size: 14px; font-weight: 500; position: relative; transition: color .25s; }
+    nav .links a::after { content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2)); transition: width .3s ease; }
+    nav .links a:hover { color: var(--text); }
+    nav .links a:hover::after { width: 100%; }
+    @media (max-width: 640px) { nav .links { display: none; } }
+
+    /* ===== Hero ===== */
+    header { padding: 120px 0 90px; position: relative; }
+    .eyebrow { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+    .orbit-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border:1px solid var(--border);
+      border-radius:999px; font-size:12.5px; color:var(--muted); background:var(--card); backdrop-filter: blur(6px); }
+    .orbit-badge .dot { width:7px; height:7px; border-radius:50%; background:var(--accent);
+      box-shadow:0 0 10px var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.4; transform:scale(.8)} }
+    h1 {
+      font-size: clamp(40px, 8vw, 80px); font-weight: 700; line-height: 1.02; margin: 22px 0 12px;
+      background: linear-gradient(110deg, #fff 10%, var(--accent) 40%, var(--accent-2) 70%, var(--accent-3) 95%);
+      background-size: 250% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 250% center; } }
+    .role { font-size: clamp(18px, 3vw, 26px); color: var(--muted); font-weight: 500; max-width: 760px; }
+    .role b { color: var(--text); font-weight: 600; }
+    .lede { margin-top: 24px; max-width: 660px; color: #c2cbe6; font-size: 17px; }
+    .cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px;
+      font-weight: 600; font-size: 14px; border: 1px solid var(--border);
+      transition: transform .2s ease, box-shadow .3s ease, border-color .3s; will-change: transform;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #06101c; border: none;
+      box-shadow: 0 8px 30px rgba(94,234,212,.25); }
+    .btn.primary:hover { box-shadow: 0 12px 40px rgba(167,139,250,.45); color:#06101c; }
+    .btn.ghost { color: var(--text); background: var(--card); backdrop-filter: blur(6px); }
+    .btn.ghost:hover { border-color: var(--accent); box-shadow: 0 8px 30px rgba(94,234,212,.18); color:#fff; }
+    .meta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 20px; color: var(--muted); font-size: 14px; }
+    .meta span { display: inline-flex; align-items: center; gap: 8px; }
+
+    .scroll-hint { position:absolute; bottom: 30px; left:50%; transform:translateX(-50%); color:var(--muted); font-size:12px;
+      letter-spacing:2px; text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:.7; }
+    .scroll-hint .mouse { width:22px; height:36px; border:2px solid var(--muted); border-radius:14px; position:relative; }
+    .scroll-hint .mouse::before { content:""; position:absolute; left:50%; top:7px; width:3px; height:7px; border-radius:2px;
+      background:var(--muted); transform:translateX(-50%); animation: scrolldot 1.6s infinite; }
+    @keyframes scrolldot { 0%{opacity:1; top:7px} 100%{opacity:0; top:18px} }
+
+    /* ===== Sections / reveal ===== */
+    section { padding: 64px 0; position: relative; }
+    .sec-title { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 30px; }
+    .sec-title::before { content: "✦ "; color: var(--accent-2); }
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; }
+    .reveal.d3 { transition-delay: .24s; } .reveal.d4 { transition-delay: .32s; }
+
+    /* ===== Skills ===== */
+    .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+      backdrop-filter: blur(8px); transition: transform .3s ease, border-color .3s, box-shadow .3s; position: relative; overflow: hidden; }
+    .skill-card::after { content:""; position:absolute; inset:0; border-radius:16px; padding:1px;
+      background: linear-gradient(135deg, var(--accent), transparent 40%, var(--accent-2));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity:0; transition: opacity .3s; }
+    .skill-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(10,14,30,.6); }
+    .skill-card:hover::after { opacity: 1; }
+    .skill-card h3 { font-size: 15px; color: var(--accent-2); margin-bottom: 14px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 12.5px; padding: 6px 11px; border-radius: 999px; background: rgba(124,156,255,.08);
+      border: 1px solid var(--border); color: #d3dbf2; transition: background .25s, color .25s, transform .25s; }
+    .chip:hover { background: linear-gradient(135deg, rgba(94,234,212,.18), rgba(167,139,250,.18)); color:#fff; transform: translateY(-2px); }
+
+    /* ===== Timeline ===== */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent); }
+    .job { position: relative; padding: 0 0 34px 8px; }
+    .job::before { content: ""; position: absolute; left: -27px; top: 7px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 5px rgba(94,234,212,.14), 0 0 14px var(--accent); transition: transform .3s; }
+    .job:hover::before { transform: scale(1.25); }
+    .job-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 24px;
+      backdrop-filter: blur(8px); transition: transform .3s, border-color .3s, box-shadow .3s; }
+    .job:hover .job-card { transform: translateX(6px); border-color: rgba(94,234,212,.35); box-shadow: 0 14px 40px rgba(10,14,30,.55); }
+    .job .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; align-items: baseline; }
+    .job h3 { font-size: 18px; }
+    .job .co { background: linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:600; }
+    .job .when { color: var(--muted); font-size: 12.5px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+    .job ul { margin: 12px 0 0; padding-left: 18px; color: #c2cbe6; }
+    .job ul li { margin-bottom: 7px; font-size: 14.5px; }
+    .job ul li::marker { color: var(--accent); }
+
+    /* ===== Education / contact ===== */
+    .edu, .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px;
+      backdrop-filter: blur(8px); }
+    .contact-card { text-align:center; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .contact-grid a, .contact-grid span { color: #d3dbf2; padding:14px; border:1px solid var(--border); border-radius:12px;
+      background: rgba(124,156,255,.05); transition: transform .25s, border-color .25s, color .25s; display:block; }
+    .contact-grid a:hover { transform: translateY(-4px); border-color: var(--accent); color:#fff; }
+
+    footer { padding: 50px 0 70px; color: var(--muted); font-size: 13px; text-align: center; border-top: 1px solid var(--border); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="nebula a"></div>
+  <div class="nebula b"></div>
+  <div class="nebula c"></div>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand"><span>TNO</span> · dev</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <span class="orbit-badge reveal"><span class="dot"></span> Available for opportunities</span>
+      <h1 class="reveal d1">Tobi Nathan Owonubi</h1>
+      <p class="role reveal d2">Software Engineer · <b>AI &amp; LLM</b> — building web products, data pipelines &amp; AI-integrated features.</p>
+      <p class="lede reveal d3">
+        I write production-grade JavaScript and Python, architect responsive React interfaces, and
+        work across the ML lifecycle — from sourcing and annotating training data to integrating
+        LLM-powered features directly into shipped products.
+      </p>
+      <div class="cta reveal d4">
+        <a class="btn primary" href="#contact">Get in touch →</a>
+        <a class="btn ghost" href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn ghost" href="mailto:epiphathan@gmail.com">Email</a>
+      </div>
+      <div class="meta reveal d4">
+        <span>📍 Lagos, Nigeria</span>
+        <span>✉️ epiphathan@gmail.com</span>
+        <span>📞 +234 704 747 0919</span>
+      </div>
+    </div>
+    <div class="scroll-hint"><div class="mouse"></div>scroll</div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-title reveal">About</div>
+      <p class="reveal d1" style="max-width:740px;color:#c2cbe6;font-size:17px;">
+        Versatile software engineer building full-stack web products, intelligent data pipelines, and
+        AI-integrated features across fast-paced tech environments. I bring a combination of low-level
+        technical grounding, modern frontend craft, and genuine enthusiasm for where AI is taking
+        software. I pick up new frameworks quickly, work well in agile teams, and I'm motivated by
+        building things that actually matter to users.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-title reveal">Technical Skills</div>
+      <div class="skill-grid">
+        <div class="skill-card reveal">
+          <h3>Languages</h3>
+          <div class="chips">
+            <span class="chip">JavaScript (ES2022+)</span><span class="chip">TypeScript</span>
+            <span class="chip">Python</span><span class="chip">HTML5</span><span class="chip">CSS3</span>
+          </div>
+        </div>
+        <div class="skill-card reveal d1">
+          <h3>Frontend</h3>
+          <div class="chips">
+            <span class="chip">React.js</span><span class="chip">Next.js</span>
+            <span class="chip">Tailwind CSS</span><span class="chip">Bootstrap</span>
+            <span class="chip">Responsive Design</span><span class="chip">Accessibility (WCAG)</span>
+          </div>
+        </div>
+        <div class="skill-card reveal d2">
+          <h3>Backend &amp; APIs</h3>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">REST APIs</span>
+            <span class="chip">GraphQL</span><span class="chip">FastAPI</span>
+            <span class="chip">Python automation</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>AI / LLM</h3>
+          <div class="chips">
+            <span class="chip">Prompt engineering</span><span class="chip">LangChain</span>
+            <span class="chip">OpenAI &amp; Anthropic APIs</span><span class="chip">RAG pipelines</span>
+            <span class="chip">Data annotation</span><span class="chip">Model eval &amp; RLHF</span>
+            <span class="chip">NLP integration</span>
+          </div>
+        </div>
+        <div class="skill-card reveal d1">
+          <h3>CMS &amp; Tools</h3>
+          <div class="chips">
+            <span class="chip">WordPress</span><span class="chip">Headless CMS</span>
+            <span class="chip">Git &amp; GitHub</span><span class="chip">Vercel</span>
+            <span class="chip">Netlify</span><span class="chip">Docker (basics)</span>
+            <span class="chip">CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-card reveal d2">
+          <h3>Practices</h3>
+          <div class="chips">
+            <span class="chip">Agile / Scrum</span><span class="chip">Cross-functional collaboration</span>
+            <span class="chip">Performance optimisation</span><span class="chip">SEO basics</span>
+            <span class="chip">Technical documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-title reveal">Experience</div>
+      <div class="timeline">
+
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="top">
+              <h3>Fullstack Engineer · <span class="co">Tomilak</span></h3>
+              <span class="when">Jan 2026 – Present · Remote, Canada</span>
+            </div>
+            <ul>
+              <li>Develop and maintain responsive web applications using React, TypeScript, Django, and Python across multiple business functions.</li>
+              <li>Build reusable frontend components and optimise UIs for performance, accessibility, and cross-browser compatibility.</li>
+              <li>Design and integrate RESTful APIs connecting frontend applications to backend services.</li>
+              <li>Implement backend features, database models, and business logic in Django for reliable, maintainable architecture.</li>
+              <li>Automate routine workflows and data-processing tasks with Python, reducing manual effort.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="top">
+              <h3>Software Engineer · <span class="co">Neobot Tech</span></h3>
+              <span class="when">Mar 2024 – Dec 2025 · Lagos, Nigeria</span>
+            </div>
+            <ul>
+              <li>Built and shipped interactive, high-performance apps in React, TypeScript, and Next.js serving thousands of daily active users.</li>
+              <li>Developed Python backend scripts, REST integrations, and automated data pipelines supporting product and ML training workflows.</li>
+              <li>Integrated LLM-powered features — AI-assisted content generation and NLP automation — using OpenAI and Anthropic APIs.</li>
+              <li>Sourced, cleaned, and structured large training datasets, improving model readiness and input quality.</li>
+              <li>Operated inside an agile squad: sprint planning, code reviews, and iterative releases tied to active AI research objectives.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="top">
+              <h3>Software Engineer · <span class="co">Websoft</span></h3>
+              <span class="when">Aug 2022 – Dec 2023 · Lagos, Nigeria</span>
+            </div>
+            <ul>
+              <li>Architected and shipped full-stack apps in React, Node.js, JavaScript, HTML5, and CSS3 — optimised for load speed, SEO, and UX.</li>
+              <li>Championed AI-assisted development workflows, integrating LLM tooling to reduce repetitive delivery overhead.</li>
+              <li>Designed structured data annotation and labeling pipelines, raising quality standards for model training.</li>
+              <li>Built NLP and automation features into live web products, bridging software engineering and MLOps.</li>
+              <li>Contributed to model evaluation pipelines and feedback loops improving accuracy and reliability.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="top">
+              <h3>Software Engineer · <span class="co">Talosmart Tech</span></h3>
+              <span class="when">Sep 2019 – Feb 2020 · Lagos, Nigeria</span>
+            </div>
+            <ul>
+              <li>Delivered performant, accessible web interfaces in JavaScript, HTML, and CSS with a focus on usability and browser compatibility.</li>
+              <li>Built Python automation scripts and backend data ingestion systems feeding AI application pipelines.</li>
+              <li>Reviewed and quality-controlled AI-generated outputs, contributing structured feedback into model refinement cycles.</li>
+              <li>Collaborated with data scientists and product managers on ML-integrated feature development.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job reveal">
+          <div class="job-card">
+            <div class="top">
+              <h3>IT Systems Engineer &amp; Educator · <span class="co">Adex Computer Engineering Institution</span></h3>
+              <span class="when">Dec 2009 – Aug 2011 · Kabba, Kogi State</span>
+            </div>
+            <ul>
+              <li>Designed, built, and maintained computer systems and local area networks (LAN) across client environments.</li>
+              <li>Delivered technical training in JavaScript fundamentals, WordPress development, MS Office, networking, and hardware diagnostics.</li>
+              <li>Administered WordPress installations — themes, plugins, custom configurations — for client websites.</li>
+              <li>Diagnosed and resolved complex hardware/software faults; built systems-level intuition that informs frontend performance work today.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-title reveal">Education</div>
+      <div class="edu reveal d1">
+        <div class="top" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;">
+          <h3 style="font-size:18px;">Higher National Diploma</h3>
+          <span class="when mono" style="color:var(--muted);font-size:13px;">2016 – 2019</span>
+        </div>
+        <p style="margin-top:6px;"><span class="co" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600;">Yaba College of Technology</span> · Lagos, Nigeria</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-title reveal" style="text-align:center;">Contact</div>
+      <div class="contact-card reveal d1">
+        <h3 style="font-size:24px;">Let's build something worth shipping.</h3>
+        <p style="color:var(--muted);margin-top:8px;">Open to opportunities and collaboration.</p>
+        <div class="contact-grid">
+          <a href="mailto:epiphathan@gmail.com">✉️ epiphathan@gmail.com</a>
+          <a href="tel:+2347047470919">📞 +234 704 747 0919</a>
+          <a href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">💻 github.com/DevEpiphanyNat</a>
+          <span>📍 Lagos, Nigeria</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © <span id="year">2026</span> Tobi Nathan Owonubi · Crafted with plain HTML, CSS &amp; a little JavaScript · Hosted on GitHub Pages
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ===== Scroll reveal ===== */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ===== Starfield ===== */
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [], shooters = [], w, h, mx = 0, my = 0;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      const count = Math.min(220, Math.floor(w * h / 8000));
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() * 1.4 + 0.3,
+        z: Math.random() * 0.8 + 0.2,
+        tw: Math.random() * Math.PI * 2,
+        tws: Math.random() * 0.04 + 0.008
+      }));
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    window.addEventListener('mousemove', (e) => {
+      mx = (e.clientX / w - 0.5);
+      my = (e.clientY / h - 0.5);
+    });
+
+    function spawnShooter() {
+      if (reduce) return;
+      const startX = Math.random() * w * 0.6;
+      shooters.push({ x: startX, y: Math.random() * h * 0.4, len: Math.random() * 120 + 80,
+        speed: Math.random() * 6 + 6, life: 1 });
+    }
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        s.tw += s.tws;
+        const a = 0.4 + Math.abs(Math.sin(s.tw)) * 0.6;
+        const px = s.x + (reduce ? 0 : mx * 30 * s.z);
+        const py = s.y + (reduce ? 0 : my * 30 * s.z);
+        ctx.beginPath();
+        ctx.arc(px, py, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200,220,255,${a})`;
+        ctx.fill();
+      }
+      for (let i = shooters.length - 1; i >= 0; i--) {
+        const sh = shooters[i];
+        sh.x += sh.speed; sh.y += sh.speed * 0.5; sh.life -= 0.012;
+        const grad = ctx.createLinearGradient(sh.x, sh.y, sh.x - sh.len, sh.y - sh.len * 0.5);
+        grad.addColorStop(0, `rgba(255,255,255,${sh.life})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad; ctx.lineWidth = 2; ctx.beginPath();
+        ctx.moveTo(sh.x, sh.y); ctx.lineTo(sh.x - sh.len, sh.y - sh.len * 0.5); ctx.stroke();
+        if (sh.life <= 0 || sh.x > w) shooters.splice(i, 1);
+      }
+      frame++;
+      if (!reduce && frame % 220 === 0) spawnShooter();
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
