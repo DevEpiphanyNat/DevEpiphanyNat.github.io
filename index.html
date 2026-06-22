@@ -140,7 +140,7 @@
       <div class="tab" data-file="skills"><span>🧩</span> skills.ts</div>
       <div class="tab" data-file="projects"><span>📁</span> projects.md</div>
       <div class="tab" data-file="contact"><span>⚡</span> contact.sh</div>
-      <button class="runbtn" id="runBtn">▶ Run</button>
+      <button class="runbtn back" id="runBtn">⟨⟩ Code</button>
     </div>
 
     <div class="body">
@@ -156,8 +156,8 @@
 
       <div class="editor" id="editor">
         <!-- ============ CODE VIEWS ============ -->
-        <div class="file active" data-file="about">
-          <div class="line"><span class="c">// Hi — I'm Tobi. Hit ▶ Run (top-right) for the friendly view.</span></div>
+        <div class="file" data-file="about">
+          <div class="line"><span class="c">// Source view. Hit ⟨⟩ / Run (top-right) to flip back to the friendly view.</span></div>
           <div class="line"><span class="k">const</span> <span class="f">tobi</span> <span class="pu">=</span> <span class="pu">{</span></div>
           <div class="line">  <span class="p">name</span><span class="pu">:</span> <span class="s">"Tobi Nathan Owonubi"</span><span class="pu">,</span></div>
           <div class="line">  <span class="p">role</span><span class="pu">:</span> <span class="s">"Software Engineer · AI / LLM"</span><span class="pu">,</span></div>
@@ -233,7 +233,7 @@
         </div>
 
         <!-- ============ OUTPUT (RUN) VIEWS ============ -->
-        <div class="preview" data-preview="about">
+        <div class="preview active" data-preview="about">
           <div class="pv-banner"><span class="spin"></span> ▶ output · executed about.js</div>
           <div class="pv-pad">
             <div class="pv-hero">
@@ -321,7 +321,7 @@
     const tabs = document.querySelectorAll('.tab');
     const fileItems = document.querySelectorAll('.file-i');
     const runBtn = document.getElementById('runBtn');
-    let mode = 'code';      // 'code' | 'run'
+    let mode = 'run';       // 'code' | 'run' — default to friendly Output view
     let current = 'about';
 
     function render(){
@@ -381,7 +381,7 @@
     const boot = [
       ['<span class="prompt">visitor@tobi</span>:<span class="path">~</span>$ <span class="cmd">whoami</span>', 0],
       ['<span class="out"><b>Tobi Nathan Owonubi</b> · Software Engineer · AI / LLM</span>', 120],
-      ['<span class="out">Tip: hit <b>▶ Run</b> (top-right) or type <b>run</b> for the friendly view. <b>help</b> for more.</span>', 120],
+      ['<span class="out">You're on the <b>friendly view</b>. Want the source? Hit <b>⟨⟩ Code</b> (top-right) or type <b>code</b>. <b>help</b> for more.</span>', 120],
     ];
     let bi=0; (function tick(){ if(bi>=boot.length){ input.focus(); return; } const [h,d]=boot[bi++]; line(h); setTimeout(tick, 340+d); })();
     window.addEventListener('click', e => { if(!e.target.closest('a, button, .tab, .file-i, input')) input.focus(); });
