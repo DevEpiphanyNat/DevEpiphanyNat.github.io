@@ -4,308 +4,312 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tobi Nathan Owonubi — Software Engineer</title>
-  <meta name="description" content="Tobi Nathan Owonubi — Software Engineer & AI/LLM specialist. Full-stack web, data pipelines, and shipped AI features." />
-  <meta property="og:title" content="Tobi Nathan Owonubi — Software Engineer" />
-  <meta property="og:description" content="Full-stack engineer. JavaScript, Python, React, and production LLM features." />
-  <meta name="theme-color" content="#f7f4ee" />
+  <meta name="description" content="Tobi Nathan Owonubi — Software Engineer & AI/LLM specialist. Explore the workspace." />
+  <meta name="theme-color" content="#0d1117" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --paper:#f7f4ee;
-      --paper-2:#f1ebe0;
-      --ink:#1d1a16;
-      --ink-soft:#57514a;
-      --line:#e3dccd;
-      --accent:#b8461f;
-      --accent-deep:#933615;
-      --accent-soft:rgba(184,70,31,.08);
-      --card:#fffdf8;
-      --serif:'Newsreader',Georgia,serif;
-      --sans:'Plus Jakarta Sans',system-ui,sans-serif;
-      --mono:'JetBrains Mono',monospace;
+      --bg:#010409; --chrome:#0a0e14; --editor:#0d1117; --explorer:#0a0e14; --term:#06080c;
+      --text:#c9d1d9; --muted:#8b949e; --line:#21262d; --line-soft:#161b22;
+      --accent:#58a6ff;
+      --key:#ff7b72; --fn:#d2a8ff; --str:#a5d6ff; --num:#79c0ff; --prop:#7ee787; --com:#6e7681; --type:#ffa657;
+      --green:#3fb950;
+      --mono:'JetBrains Mono',monospace; --sans:'Inter',system-ui,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none;}
-    ::selection{background:var(--accent);color:#fff;}
+    html,body{height:100%;}
+    body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:14px;-webkit-font-smoothing:antialiased;overflow:hidden;}
+    ::selection{background:rgba(88,166,255,.35);}
+    ::-webkit-scrollbar{width:10px;height:10px;} ::-webkit-scrollbar-thumb{background:#21262d;border-radius:6px;} ::-webkit-scrollbar-track{background:transparent;}
 
-    .shell{display:grid;grid-template-columns:360px 1fr;min-height:100vh;}
+    .ide{display:grid;grid-template-rows:auto auto 1fr auto;height:100vh;}
 
-    /* ===== Sidebar ===== */
-    .rail{position:sticky;top:0;height:100vh;background:var(--paper-2);border-right:1px solid var(--line);
-      padding:48px 42px;display:flex;flex-direction:column;}
-    .mono-kicker{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);}
-    .avatar{width:64px;height:64px;border-radius:16px;background:var(--ink);color:var(--paper);display:grid;place-items:center;
-      font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:26px;}
-    .rail h1{font-family:var(--serif);font-size:34px;font-weight:500;line-height:1.1;letter-spacing:-.01em;margin:2px 0 8px;}
-    .rail .role{font-size:14.5px;color:var(--ink-soft);}
-    .rail .role b{color:var(--ink);font-weight:600;}
-    .rail .avail{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);
-      padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);width:max-content;}
-    .rail .avail .dot{width:7px;height:7px;border-radius:50%;background:#2e9e5b;box-shadow:0 0 0 3px rgba(46,158,91,.16);}
-    .rail .bio{margin-top:22px;font-size:14px;color:var(--ink-soft);max-width:30ch;}
+    /* titlebar */
+    .titlebar{display:flex;align-items:center;gap:14px;background:var(--chrome);border-bottom:1px solid var(--line);padding:10px 14px;}
+    .lights{display:flex;gap:8px;}
+    .lights i{width:12px;height:12px;border-radius:50%;display:block;}
+    .lights .r{background:#ff5f56;} .lights .y{background:#ffbd2e;} .lights .g{background:#27c93f;}
+    .titlebar .name{color:var(--muted);font-size:12.5px;margin:0 auto;}
+    .titlebar .badge{font-size:11px;color:var(--green);display:inline-flex;align-items:center;gap:6px;}
+    .titlebar .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-    .railnav{margin-top:38px;display:flex;flex-direction:column;gap:2px;}
-    .railnav a{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:14px;color:var(--ink-soft);transition:color .2s, padding .2s;}
-    .railnav a .n{font-family:var(--mono);font-size:11px;color:var(--line);transition:color .2s;}
-    .railnav a:hover{color:var(--ink);padding-left:4px;}
-    .railnav a.active{color:var(--accent);font-weight:600;}
-    .railnav a.active .n{color:var(--accent);}
+    /* tabs */
+    .tabs{display:flex;background:var(--chrome);border-bottom:1px solid var(--line);overflow-x:auto;}
+    .tab{display:flex;align-items:center;gap:8px;padding:11px 18px;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap;
+      border-right:1px solid var(--line);border-top:2px solid transparent;transition:color .2s, background .2s;}
+    .tab .ico{font-size:12px;}
+    .tab:hover{color:var(--text);background:rgba(255,255,255,.02);}
+    .tab.active{color:var(--text);background:var(--editor);border-top-color:var(--accent);}
 
-    .rail .social{margin-top:auto;padding-top:30px;display:flex;gap:18px;font-size:13px;}
-    .rail .social a{color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:color .2s, border-color .2s;}
-    .rail .social a:hover{color:var(--accent);border-color:var(--accent);}
+    /* body: explorer + editor */
+    .body{display:grid;grid-template-columns:230px 1fr;overflow:hidden;}
+    .explorer{background:var(--explorer);border-right:1px solid var(--line);padding:14px 10px;overflow-y:auto;}
+    .explorer .head{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:6px 10px 12px;}
+    .explorer .folder{font-size:12.5px;color:var(--text);padding:5px 10px;}
+    .explorer .file-i{display:flex;align-items:center;gap:9px;padding:6px 10px 6px 22px;font-size:13px;color:var(--muted);cursor:pointer;border-radius:6px;transition:background .15s,color .15s;}
+    .explorer .file-i:hover{background:rgba(255,255,255,.03);color:var(--text);}
+    .explorer .file-i.active{background:rgba(88,166,255,.12);color:var(--text);}
+    .explorer .dot-js{color:#e3b341;} .explorer .dot-json{color:#79c0ff;} .explorer .dot-ts{color:#58a6ff;} .explorer .dot-md{color:#8b949e;} .explorer .dot-sh{color:#7ee787;}
 
-    /* ===== Main ===== */
-    main{padding:0;}
-    .section{padding:96px 8vw 96px 7vw;max-width:920px;border-bottom:1px solid var(--line);}
-    .section:last-of-type{border-bottom:none;}
-    .kicker-row{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
-    .kicker-row::after{content:"";flex:1;height:1px;background:var(--line);}
-    h2{font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:500;letter-spacing:-.02em;line-height:1.12;}
+    .editor{overflow-y:auto;background:var(--editor);position:relative;}
+    .file{display:none;padding:26px 30px 60px;counter-reset:ln;animation:fadein .35s ease;}
+    .file.active{display:block;}
+    @keyframes fadein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    .line{counter-increment:ln;position:relative;padding-left:52px;min-height:22px;line-height:22px;white-space:pre-wrap;}
+    .line::before{content:counter(ln);position:absolute;left:0;width:36px;text-align:right;color:#373e47;user-select:none;}
+    .k{color:var(--key);} .f{color:var(--fn);} .s{color:var(--str);} .n{color:var(--num);} .p{color:var(--prop);} .c{color:var(--com);font-style:italic;} .t{color:var(--type);} .pu{color:#8b949e;}
 
-    .lead{font-family:var(--serif);font-size:clamp(22px,3.2vw,30px);font-weight:400;line-height:1.45;color:var(--ink);max-width:24ch;}
-    .lead.intro{margin-bottom:28px;}
-    .prose{font-size:16px;color:var(--ink-soft);max-width:62ch;margin-top:20px;}
-    .prose + .prose{margin-top:14px;}
-    .pill-accent{color:var(--accent);font-weight:600;}
+    /* projects view */
+    .pad{padding:26px 30px 60px;animation:fadein .35s ease;}
+    .pad .note{color:var(--com);font-style:italic;margin-bottom:20px;}
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+    .proj{background:var(--chrome);border:1px solid var(--line);border-radius:12px;padding:20px;transition:transform .25s, border-color .25s, box-shadow .25s;}
+    .proj:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 14px 40px rgba(0,0,0,.5);}
+    .proj .top{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .proj h3{font-size:15px;color:var(--text);font-family:var(--mono);}
+    .proj .repo{font-size:11px;color:var(--accent);}
+    .proj p{font-family:var(--sans);font-size:13.5px;color:var(--muted);margin:10px 0 14px;line-height:1.6;}
+    .proj .tags{display:flex;flex-wrap:wrap;gap:6px;}
+    .proj .tag{font-size:11px;padding:3px 9px;border-radius:999px;background:rgba(88,166,255,.1);border:1px solid var(--line);color:#9ecbff;}
 
-    .cta-inline{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;}
-    .btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;padding:12px 20px;border-radius:10px;
-      border:1px solid var(--ink);transition:transform .2s, background .2s, color .2s;cursor:pointer;background:transparent;color:var(--ink);font-family:var(--sans);}
-    .btn:hover{transform:translateY(-2px);}
-    .btn.solid{background:var(--ink);color:var(--paper);}
-    .btn.solid:hover{background:var(--accent);border-color:var(--accent);}
-    .btn.line:hover{border-color:var(--accent);color:var(--accent);}
+    /* terminal */
+    .terminal{background:var(--term);border-top:1px solid var(--line);height:210px;display:flex;flex-direction:column;}
+    .terminal .bar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line-soft);font-size:11px;color:var(--muted);}
+    .terminal .bar .tt{color:var(--text);} .terminal .bar .hint{margin-left:auto;color:#484f58;}
+    .term-body{flex:1;overflow-y:auto;padding:12px 14px;font-size:13px;line-height:1.6;}
+    .term-body .row2{white-space:pre-wrap;word-break:break-word;}
+    .prompt{color:var(--green);} .path{color:var(--accent);} .cmd{color:var(--text);}
+    .out{color:var(--muted);} .out b{color:var(--text);font-weight:600;} .out .hl{color:#9ecbff;}
+    .term-input{display:flex;align-items:center;gap:8px;padding:8px 14px;border-top:1px solid var(--line-soft);}
+    .term-input .ps{color:var(--green);white-space:nowrap;}
+    .term-input input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:var(--mono);font-size:13px;caret-color:var(--accent);}
+    .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:middle;animation:blink 1.1s steps(1) infinite;}
+    @keyframes blink{50%{opacity:0;}}
 
-    /* Experience — typeset list */
-    .xp{display:grid;grid-template-columns:140px 1fr;gap:0 28px;padding:26px 0;border-top:1px solid var(--line);}
-    .xp:first-of-type{border-top:none;}
-    .xp .years{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);padding-top:5px;}
-    .xp .place{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-top:8px;}
-    .xp h3{font-family:var(--serif);font-size:22px;font-weight:500;margin:2px 0 2px;}
-    .xp h3 .co{color:var(--accent);}
-    .xp ul{margin:12px 0 0;padding-left:0;list-style:none;}
-    .xp li{position:relative;padding-left:20px;margin-bottom:7px;font-size:14.5px;color:var(--ink-soft);}
-    .xp li::before{content:"—";position:absolute;left:0;color:var(--accent);}
-    @media (max-width:560px){ .xp{grid-template-columns:1fr;gap:8px;} .xp .years{padding-top:0;} }
-
-    /* Skills — definition rows */
-    .deflist{border-top:1px solid var(--line);}
-    .defrow{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline;}
-    .defrow dt{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);}
-    .defrow dd{font-size:16px;color:var(--ink);}
-    .defrow dd span{color:var(--ink-soft);}
-    @media (max-width:560px){ .defrow{grid-template-columns:1fr;gap:6px;} }
-
-    /* Education */
-    .edu-block{border-top:1px solid var(--line);padding-top:22px;}
-    .edu-block h3{font-family:var(--serif);font-size:22px;font-weight:500;}
-    .edu-block .meta{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-top:4px;}
-
-    /* Contact */
-    #contact{background:var(--paper-2);}
-    .contact-big{font-family:var(--serif);font-size:clamp(30px,5vw,52px);font-weight:500;letter-spacing:-.02em;line-height:1.08;max-width:18ch;}
-    .mailline{margin-top:32px;display:inline-flex;align-items:center;gap:14px;font-family:var(--serif);font-size:clamp(20px,3vw,30px);
-      color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:6px;transition:opacity .2s;}
-    .mailline:hover{opacity:.7;}
-    .contact-links{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;}
-    .contact-links a, .contact-links button{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft);background:none;border:none;
-      font-family:var(--sans);font-size:14px;cursor:pointer;border-bottom:1px solid transparent;padding:2px 0;transition:color .2s, border-color .2s;}
-    .contact-links a:hover, .contact-links button:hover{color:var(--accent);border-color:var(--accent);}
-    .footnote{margin-top:46px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);}
-
-    /* mobile: stack rail */
-    @media (max-width:900px){
-      .shell{grid-template-columns:1fr;}
-      .rail{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:40px 28px;}
-      .rail .social{margin-top:30px;}
-      .railnav{flex-flow:row wrap;gap:14px;}
-      .railnav a .n{display:none;}
-      .section{padding:64px 28px;}
-    }
-
-    @media print{
-      .rail{position:static;height:auto;} .railnav,.rail .avail,.cta-inline,.contact-links{display:none;}
-      body,#contact{background:#fff;} .btn{display:none;}
+    @media (max-width:760px){
+      body{overflow:auto;}
+      .ide{height:auto;min-height:100vh;}
+      .body{grid-template-columns:1fr;}
+      .explorer{display:none;}
+      .editor{max-height:none;}
+      .terminal{height:240px;position:sticky;bottom:0;}
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <aside class="rail">
-      <div class="avatar">TN</div>
-      <p class="mono-kicker">Software Engineer</p>
-      <h1>Tobi Nathan<br>Owonubi</h1>
-      <p class="role">Full-stack &amp; <b>AI / LLM</b> engineering</p>
-      <span class="avail"><span class="dot"></span> Available for new roles</span>
-      <p class="bio">I build web products and ship real LLM features — from training data to production.</p>
+  <div class="ide">
+    <!-- titlebar -->
+    <div class="titlebar">
+      <div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+      <span class="name">tobi-owonubi — portfolio — VS Workspace</span>
+      <span class="badge"><span class="dot"></span>available for hire</span>
+    </div>
 
-      <nav class="railnav" id="railnav">
-        <a href="#about"><span class="n">01</span> About</a>
-        <a href="#work"><span class="n">02</span> Experience</a>
-        <a href="#stack"><span class="n">03</span> Stack</a>
-        <a href="#education"><span class="n">04</span> Education</a>
-        <a href="#contact"><span class="n">05</span> Contact</a>
-      </nav>
+    <!-- tabs -->
+    <div class="tabs" id="tabs">
+      <div class="tab active" data-file="about"><span class="ico">📄</span> about.js</div>
+      <div class="tab" data-file="experience"><span class="ico">🧾</span> experience.json</div>
+      <div class="tab" data-file="skills"><span class="ico">🧩</span> skills.ts</div>
+      <div class="tab" data-file="projects"><span class="ico">📁</span> projects.md</div>
+      <div class="tab" data-file="contact"><span class="ico">⚡</span> contact.sh</div>
+    </div>
 
-      <div class="social">
-        <a href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:epiphathan@gmail.com">Email</a>
-        <a href="https://wa.me/2347047470919" target="_blank" rel="noopener">WhatsApp</a>
+    <!-- body -->
+    <div class="body">
+      <aside class="explorer">
+        <div class="head">Explorer</div>
+        <div class="folder">📂 tobi-owonubi/</div>
+        <div class="file-i active" data-file="about"><span class="dot-js">●</span> about.js</div>
+        <div class="file-i" data-file="experience"><span class="dot-json">●</span> experience.json</div>
+        <div class="file-i" data-file="skills"><span class="dot-ts">●</span> skills.ts</div>
+        <div class="file-i" data-file="projects"><span class="dot-md">●</span> projects.md</div>
+        <div class="file-i" data-file="contact"><span class="dot-sh">●</span> contact.sh</div>
+      </aside>
+
+      <div class="editor" id="editor">
+        <!-- about.js -->
+        <div class="file active" data-file="about">
+          <div class="line"><span class="c">// Hi — I'm Tobi. Run `help` in the terminal below ↓</span></div>
+          <div class="line"><span class="k">const</span> <span class="f">tobi</span> <span class="pu">=</span> <span class="pu">{</span></div>
+          <div class="line">  <span class="p">name</span><span class="pu">:</span> <span class="s">"Tobi Nathan Owonubi"</span><span class="pu">,</span></div>
+          <div class="line">  <span class="p">role</span><span class="pu">:</span> <span class="s">"Software Engineer · AI / LLM"</span><span class="pu">,</span></div>
+          <div class="line">  <span class="p">location</span><span class="pu">:</span> <span class="s">"Lagos, Nigeria"</span><span class="pu">,</span></div>
+          <div class="line">  <span class="p">experience</span><span class="pu">:</span> <span class="s">"5+ years"</span><span class="pu">,</span></div>
+          <div class="line">  <span class="p">available</span><span class="pu">:</span> <span class="k">true</span><span class="pu">,</span></div>
+          <div class="line">  <span class="p">summary</span><span class="pu">:</span> <span class="s">`production-grade JavaScript &amp; Python,</span></div>
+          <div class="line"><span class="s">            responsive React used by thousands,</span></div>
+          <div class="line"><span class="s">            and real LLM features in shipped products`</span><span class="pu">,</span></div>
+          <div class="line">  <span class="p">does</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"full-stack web"</span><span class="pu">,</span> <span class="s">"LLM integration"</span><span class="pu">,</span> <span class="s">"data pipelines"</span><span class="pu">]</span><span class="pu">,</span></div>
+          <div class="line">  <span class="f">hire</span><span class="pu">:</span> <span class="pu">()</span> <span class="k">=&gt;</span> <span class="f">mailto</span><span class="pu">(</span><span class="s">"epiphathan@gmail.com"</span><span class="pu">)</span><span class="pu">,</span></div>
+          <div class="line"><span class="pu">}</span><span class="pu">;</span></div>
+          <div class="line"></div>
+          <div class="line"><span class="f">export</span> <span class="k">default</span> <span class="f">tobi</span><span class="pu">;</span> <span class="c">// open the other tabs →</span></div>
+        </div>
+
+        <!-- experience.json -->
+        <div class="file" data-file="experience">
+          <div class="line"><span class="pu">[</span></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">"company"</span><span class="pu">:</span> <span class="s">"Tomilak"</span><span class="pu">,</span> <span class="p">"role"</span><span class="pu">:</span> <span class="s">"Fullstack Engineer"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"period"</span><span class="pu">:</span> <span class="s">"Jan 2026 – Present"</span><span class="pu">,</span> <span class="p">"where"</span><span class="pu">:</span> <span class="s">"Remote · Canada"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"did"</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"React/TS/Django apps"</span><span class="pu">,</span> <span class="s">"REST APIs"</span><span class="pu">,</span> <span class="s">"Python automation"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line"></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">"company"</span><span class="pu">:</span> <span class="s">"Neobot Tech"</span><span class="pu">,</span> <span class="p">"role"</span><span class="pu">:</span> <span class="s">"Software Engineer"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"period"</span><span class="pu">:</span> <span class="s">"Mar 2024 – Dec 2025"</span><span class="pu">,</span> <span class="p">"where"</span><span class="pu">:</span> <span class="s">"Lagos · Nigeria"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"did"</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Next.js apps, 1000s DAU"</span><span class="pu">,</span> <span class="s">"OpenAI &amp; Anthropic LLM features"</span><span class="pu">,</span> <span class="s">"ML data pipelines"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line"></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">"company"</span><span class="pu">:</span> <span class="s">"Websoft"</span><span class="pu">,</span> <span class="p">"role"</span><span class="pu">:</span> <span class="s">"Software Engineer"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"period"</span><span class="pu">:</span> <span class="s">"Aug 2022 – Dec 2023"</span><span class="pu">,</span> <span class="p">"where"</span><span class="pu">:</span> <span class="s">"Lagos · Nigeria"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"did"</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Full-stack React/Node"</span><span class="pu">,</span> <span class="s">"annotation pipelines"</span><span class="pu">,</span> <span class="s">"NLP + model eval"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line"></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">"company"</span><span class="pu">:</span> <span class="s">"Talosmart Tech"</span><span class="pu">,</span> <span class="p">"role"</span><span class="pu">:</span> <span class="s">"Software Engineer"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"period"</span><span class="pu">:</span> <span class="s">"Sep 2019 – Feb 2020"</span><span class="pu">,</span> <span class="p">"where"</span><span class="pu">:</span> <span class="s">"Lagos · Nigeria"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"did"</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Accessible web UIs"</span><span class="pu">,</span> <span class="s">"Python data ingestion"</span><span class="pu">,</span> <span class="s">"AI output QC"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line"></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">"company"</span><span class="pu">:</span> <span class="s">"Adex Computer Engineering"</span><span class="pu">,</span> <span class="p">"role"</span><span class="pu">:</span> <span class="s">"IT Systems Engineer &amp; Educator"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"period"</span><span class="pu">:</span> <span class="s">"Dec 2009 – Aug 2011"</span><span class="pu">,</span> <span class="p">"where"</span><span class="pu">:</span> <span class="s">"Kabba · Kogi State"</span><span class="pu">,</span></div>
+          <div class="line">    <span class="p">"did"</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Systems &amp; LAN builds"</span><span class="pu">,</span> <span class="s">"taught JS/WordPress/networking"</span><span class="pu">]</span> <span class="pu">}</span></div>
+          <div class="line"><span class="pu">]</span></div>
+        </div>
+
+        <!-- skills.ts -->
+        <div class="file" data-file="skills">
+          <div class="line"><span class="k">type</span> <span class="t">Stack</span> <span class="pu">=</span> <span class="pu">{</span> <span class="p">area</span><span class="pu">:</span> <span class="t">string</span><span class="pu">;</span> <span class="p">tools</span><span class="pu">:</span> <span class="t">string</span><span class="pu">[]</span> <span class="pu">};</span></div>
+          <div class="line"></div>
+          <div class="line"><span class="k">const</span> <span class="f">stack</span><span class="pu">:</span> <span class="t">Stack</span><span class="pu">[]</span> <span class="pu">=</span> <span class="pu">[</span></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">area</span><span class="pu">:</span> <span class="s">"languages"</span><span class="pu">,</span> <span class="p">tools</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"JavaScript"</span><span class="pu">,</span> <span class="s">"TypeScript"</span><span class="pu">,</span> <span class="s">"Python"</span><span class="pu">,</span> <span class="s">"HTML5"</span><span class="pu">,</span> <span class="s">"CSS3"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">area</span><span class="pu">:</span> <span class="s">"frontend"</span><span class="pu">,</span> <span class="p">tools</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"React"</span><span class="pu">,</span> <span class="s">"Next.js"</span><span class="pu">,</span> <span class="s">"Tailwind"</span><span class="pu">,</span> <span class="s">"Bootstrap"</span><span class="pu">,</span> <span class="s">"WCAG a11y"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">area</span><span class="pu">:</span> <span class="s">"backend"</span><span class="pu">,</span> <span class="p">tools</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Node.js"</span><span class="pu">,</span> <span class="s">"REST"</span><span class="pu">,</span> <span class="s">"GraphQL"</span><span class="pu">,</span> <span class="s">"FastAPI"</span><span class="pu">,</span> <span class="s">"Django"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">area</span><span class="pu">:</span> <span class="s">"ai_llm"</span><span class="pu">,</span> <span class="p">tools</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Prompt eng"</span><span class="pu">,</span> <span class="s">"LangChain"</span><span class="pu">,</span> <span class="s">"OpenAI"</span><span class="pu">,</span> <span class="s">"Anthropic"</span><span class="pu">,</span> <span class="s">"RAG"</span><span class="pu">,</span> <span class="s">"RLHF"</span><span class="pu">,</span> <span class="s">"NLP"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line">  <span class="pu">{</span> <span class="p">area</span><span class="pu">:</span> <span class="s">"tools"</span><span class="pu">,</span> <span class="p">tools</span><span class="pu">:</span> <span class="pu">[</span><span class="s">"Git"</span><span class="pu">,</span> <span class="s">"Vercel"</span><span class="pu">,</span> <span class="s">"Netlify"</span><span class="pu">,</span> <span class="s">"Docker"</span><span class="pu">,</span> <span class="s">"CI/CD"</span><span class="pu">,</span> <span class="s">"WordPress"</span><span class="pu">]</span> <span class="pu">},</span></div>
+          <div class="line"><span class="pu">];</span></div>
+          <div class="line"></div>
+          <div class="line"><span class="k">export</span> <span class="k">const</span> <span class="f">core</span> <span class="pu">=</span> <span class="f">stack</span><span class="pu">.</span><span class="f">flatMap</span><span class="pu">(</span><span class="f">s</span> <span class="k">=&gt;</span> <span class="f">s</span><span class="pu">.</span><span class="p">tools</span><span class="pu">);</span></div>
+        </div>
+
+        <!-- projects.md -->
+        <div class="file" data-file="projects">
+          <div class="pad">
+            <p class="note">// featured work — draft cards. Swap in your real repo links &amp; screenshots.</p>
+            <div class="proj-grid">
+              <div class="proj">
+                <div class="top"><h3>LLM Content Studio</h3><a class="repo" href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">repo ↗</a></div>
+                <p>AI-assisted content generation integrated into a production web app — OpenAI &amp; Anthropic APIs behind a React/TypeScript UI with a FastAPI service.</p>
+                <div class="tags"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenAI</span><span class="tag">Anthropic</span></div>
+              </div>
+              <div class="proj">
+                <div class="top"><h3>Realtime Dashboard</h3><a class="repo" href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">repo ↗</a></div>
+                <p>High-performance Next.js dashboard serving thousands of daily active users, with REST integrations and a reusable component system.</p>
+                <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">REST</span></div>
+              </div>
+              <div class="proj">
+                <div class="top"><h3>DataForge Pipeline</h3><a class="repo" href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">repo ↗</a></div>
+                <p>Python automation for sourcing, cleaning &amp; annotating training datasets — feeding ML workflows and model-readiness checks.</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Data</span></div>
+              </div>
+              <div class="proj">
+                <div class="top"><h3>RAG Knowledge Assistant</h3><a class="repo" href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">repo ↗</a></div>
+                <p>Retrieval-augmented assistant over internal docs using LangChain + a vector store, with prompt evaluation and answer-grounding checks.</p>
+                <div class="tags"><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">NLP</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- contact.sh -->
+        <div class="file" data-file="contact">
+          <div class="line"><span class="c">#!/bin/bash</span></div>
+          <div class="line"><span class="c"># the fastest path to me ↓</span></div>
+          <div class="line"></div>
+          <div class="line"><span class="f">echo</span> <span class="s">"email   →  epiphathan@gmail.com"</span></div>
+          <div class="line"><span class="f">echo</span> <span class="s">"whatsapp→  +234 704 747 0919"</span></div>
+          <div class="line"><span class="f">echo</span> <span class="s">"github  →  github.com/DevEpiphanyNat"</span></div>
+          <div class="line"><span class="f">echo</span> <span class="s">"location→  Lagos, Nigeria (open to remote)"</span></div>
+          <div class="line"></div>
+          <div class="line"><span class="c"># or just type `hire` in the terminal ↓</span></div>
+        </div>
       </div>
-    </aside>
+    </div>
 
-    <main>
-      <section class="section" id="about">
-        <p class="lead intro">Versatile software engineer with 5+ years building full-stack products and AI-integrated features.</p>
-        <p class="prose">
-          I write production-grade <span class="pill-accent">JavaScript</span> and <span class="pill-accent">Python</span>,
-          architect responsive React interfaces used by thousands, and operate comfortably across the ML lifecycle —
-          from sourcing and annotating training data to integrating LLM features directly into shipped products.
-        </p>
-        <p class="prose">
-          A rare combination of low-level technical grounding, modern frontend craft, and genuine enthusiasm for where
-          AI is taking software. I pick up new frameworks quickly, work well in agile teams, and I'm motivated by
-          building things that actually matter to users.
-        </p>
-        <div class="cta-inline">
-          <a class="btn solid" href="mailto:epiphathan@gmail.com?subject=Opportunity%20for%20Tobi&body=Hi%20Tobi%2C%0A%0A">Email me</a>
-          <button class="btn line" onclick="window.print()">Download CV</button>
-        </div>
-      </section>
-
-      <section class="section" id="work">
-        <div class="kicker-row"><span class="mono-kicker">02 — Experience</span></div>
-        <h2 style="margin-bottom:34px;">Where I've shipped.</h2>
-
-        <div class="xp">
-          <div class="years">Jan 2026<br>— Present</div>
-          <div>
-            <h3>Fullstack Engineer · <span class="co">Tomilak</span></h3>
-            <p class="place">Remote · Canada</p>
-            <ul>
-              <li>Build &amp; maintain responsive apps in React, TypeScript, Django &amp; Python across multiple business functions.</li>
-              <li>Reusable component libraries; UIs optimised for performance, accessibility &amp; cross-browser support.</li>
-              <li>Design and integrate RESTful APIs; implement backend features, models &amp; business logic in Django.</li>
-              <li>Automate routine workflows and data-processing with Python.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="xp">
-          <div class="years">Mar 2024<br>— Dec 2025</div>
-          <div>
-            <h3>Software Engineer · <span class="co">Neobot Tech</span></h3>
-            <p class="place">Lagos · Nigeria</p>
-            <ul>
-              <li>Shipped interactive React / TypeScript / Next.js apps serving thousands of daily active users.</li>
-              <li>Python backends, REST integrations &amp; automated data pipelines supporting product and ML workflows.</li>
-              <li>Integrated LLM features — content generation &amp; NLP automation — with OpenAI and Anthropic APIs.</li>
-              <li>Sourced, cleaned &amp; structured large training datasets; worked inside an agile research squad.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="xp">
-          <div class="years">Aug 2022<br>— Dec 2023</div>
-          <div>
-            <h3>Software Engineer · <span class="co">Websoft</span></h3>
-            <p class="place">Lagos · Nigeria</p>
-            <ul>
-              <li>Architected full-stack apps in React, Node.js, JavaScript, HTML5 &amp; CSS3 — tuned for speed, SEO &amp; UX.</li>
-              <li>Championed AI-assisted dev workflows; designed data annotation &amp; labeling pipelines for model training.</li>
-              <li>Built NLP and automation features into live products; contributed to model evaluation &amp; feedback loops.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="xp">
-          <div class="years">Sep 2019<br>— Feb 2020</div>
-          <div>
-            <h3>Software Engineer · <span class="co">Talosmart Tech</span></h3>
-            <p class="place">Lagos · Nigeria</p>
-            <ul>
-              <li>Delivered performant, accessible web interfaces in JavaScript, HTML &amp; CSS.</li>
-              <li>Built Python automation scripts and backend data-ingestion feeding AI pipelines.</li>
-              <li>Reviewed and QC'd AI-generated output; collaborated with data scientists on ML-integrated features.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="xp">
-          <div class="years">Dec 2009<br>— Aug 2011</div>
-          <div>
-            <h3>IT Systems Engineer &amp; Educator · <span class="co">Adex Computer Engineering</span></h3>
-            <p class="place">Kabba · Kogi State</p>
-            <ul>
-              <li>Designed, built &amp; maintained computer systems and LANs across client environments.</li>
-              <li>Taught JavaScript, WordPress, MS Office, networking &amp; hardware diagnostics; administered WordPress sites.</li>
-              <li>Diagnosed complex hardware/software faults — systems intuition that still informs my frontend work.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="stack">
-        <div class="kicker-row"><span class="mono-kicker">03 — Stack</span></div>
-        <h2 style="margin-bottom:34px;">What I work with.</h2>
-        <dl class="deflist">
-          <div class="defrow"><dt>Languages</dt><dd>JavaScript (ES2022+) · TypeScript · Python · <span>HTML5 · CSS3</span></dd></div>
-          <div class="defrow"><dt>Frontend</dt><dd>React · Next.js · Tailwind CSS · <span>Bootstrap · Responsive · WCAG accessibility</span></dd></div>
-          <div class="defrow"><dt>Backend &amp; APIs</dt><dd>Node.js · REST · GraphQL · FastAPI · <span>Python scripting &amp; automation</span></dd></div>
-          <div class="defrow"><dt>AI / LLM</dt><dd>Prompt engineering · LangChain · OpenAI &amp; Anthropic APIs · RAG · <span>Data annotation · Model eval &amp; RLHF · NLP</span></dd></div>
-          <div class="defrow"><dt>Tools &amp; CMS</dt><dd>Git · GitHub · Vercel · Netlify · WordPress · <span>Headless CMS · Docker · CI/CD</span></dd></div>
-          <div class="defrow"><dt>Practices</dt><dd>Agile / Scrum · Performance · SEO · <span>Cross-functional collaboration · Technical writing</span></dd></div>
-        </dl>
-      </section>
-
-      <section class="section" id="education">
-        <div class="kicker-row"><span class="mono-kicker">04 — Education</span></div>
-        <div class="edu-block">
-          <h3>Higher National Diploma</h3>
-          <p class="meta">Yaba College of Technology · Lagos, Nigeria · 2016 – 2019</p>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="kicker-row"><span class="mono-kicker">05 — Contact</span></div>
-        <p class="contact-big">Let's build something people actually use.</p>
-        <a class="mailline" href="mailto:epiphathan@gmail.com?subject=Let's%20talk&body=Hi%20Tobi%2C%0A%0A">epiphathan@gmail.com →</a>
-        <div class="contact-links">
-          <a href="https://wa.me/2347047470919" target="_blank" rel="noopener">WhatsApp · +234 704 747 0919</a>
-          <a href="https://github.com/DevEpiphanyNat" target="_blank" rel="noopener">GitHub · DevEpiphanyNat</a>
-          <button id="copyEmail" data-email="epiphathan@gmail.com">Copy email</button>
-        </div>
-        <p class="footnote">Based in Lagos, Nigeria · open to remote.</p>
-      </section>
-    </main>
+    <!-- terminal -->
+    <div class="terminal">
+      <div class="bar"><span class="tt">TERMINAL</span> <span>bash</span> <span class="hint">try: help · about · projects · hire · clear</span></div>
+      <div class="term-body" id="termBody"></div>
+      <div class="term-input">
+        <span class="ps">visitor@tobi:~$</span>
+        <input id="termInput" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="terminal input" />
+      </div>
+    </div>
   </div>
 
   <script>
-    /* Scrollspy — highlight the active section in the rail */
-    const links = [...document.querySelectorAll('#railnav a')];
-    const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(a => a.classList.remove('active'));
-          const a = map.get(e.target.id); if (a) a.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-    document.querySelectorAll('main .section').forEach(s => spy.observe(s));
+    /* ---- tab / file switching ---- */
+    const files = document.querySelectorAll('.file');
+    const tabs = document.querySelectorAll('.tab');
+    const fileItems = document.querySelectorAll('.file-i');
+    function openFile(name){
+      files.forEach(f => f.classList.toggle('active', f.dataset.file === name));
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.file === name));
+      fileItems.forEach(t => t.classList.toggle('active', t.dataset.file === name));
+      document.getElementById('editor').scrollTop = 0;
+    }
+    tabs.forEach(t => t.addEventListener('click', () => openFile(t.dataset.file)));
+    fileItems.forEach(t => t.addEventListener('click', () => openFile(t.dataset.file)));
 
-    /* Copy email — inline text swap (no toast) */
-    const ce = document.getElementById('copyEmail');
-    ce.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(ce.dataset.email); const old = ce.textContent; ce.textContent = 'Copied ✓';
-        setTimeout(() => ce.textContent = old, 1600); }
-      catch { ce.textContent = ce.dataset.email; }
-    });
+    /* ---- terminal ---- */
+    const body = document.getElementById('termBody');
+    const input = document.getElementById('termInput');
+    const EMAIL = 'epiphathan@gmail.com';
+    function line(html, cls){ const d = document.createElement('div'); d.className = 'row2 ' + (cls||''); d.innerHTML = html; body.appendChild(d); body.scrollTop = body.scrollHeight; return d; }
+    function echoCmd(c){ line('<span class="prompt">visitor@tobi</span>:<span class="path">~</span>$ <span class="cmd">'+c+'</span>'); }
+
+    const COMMANDS = {
+      help(){ return `<span class="out">available commands:
+  <b>about</b>      who I am
+  <b>experience</b> where I've shipped
+  <b>skills</b>     my stack
+  <b>projects</b>   featured work
+  <b>contact</b>    how to reach me
+  <b>hire</b>       let's talk (opens email)
+  <b>open</b> &lt;tab&gt; e.g. open projects
+  <b>github</b>     open my GitHub
+  <b>clear</b>      clear the terminal</span>`; },
+      about(){ openFile('about'); return `<span class="out"><b>Tobi Nathan Owonubi</b> — Software Engineer (AI/LLM), Lagos NG. 5+ yrs full-stack web + production LLM features.</span>`; },
+      experience(){ openFile('experience'); return `<span class="out">Opened <span class="hl">experience.json</span> — 5 roles, 2009 → present.</span>`; },
+      skills(){ openFile('skills'); return `<span class="out">Opened <span class="hl">skills.ts</span> — JS · TS · Python · React · Next · FastAPI · LangChain · RAG.</span>`; },
+      projects(){ openFile('projects'); return `<span class="out">Opened <span class="hl">projects.md</span> — 4 featured builds.</span>`; },
+      contact(){ openFile('contact'); return `<span class="out">email <span class="hl">${EMAIL}</span> · whatsapp <span class="hl">+234 704 747 0919</span> · github <span class="hl">DevEpiphanyNat</span></span>`; },
+      hire(){ window.location.href = `mailto:${EMAIL}?subject=Let's%20talk&body=Hi%20Tobi%2C%0A%0A`; return `<span class="out">Opening your email app to <span class="hl">${EMAIL}</span> … 🚀</span>`; },
+      github(){ window.open('https://github.com/DevEpiphanyNat','_blank'); return `<span class="out">Opening github.com/DevEpiphanyNat ↗</span>`; },
+      whoami(){ return `<span class="out">tobi-nathan-owonubi</span>`; },
+      ls(){ return `<span class="out">about.js  experience.json  skills.ts  projects.md  contact.sh</span>`; },
+      clear(){ body.innerHTML=''; return ''; },
+    };
+    function run(raw){
+      const parts = raw.trim().split(/\s+/); const cmd = (parts[0]||'').toLowerCase();
+      if(!cmd) return;
+      echoCmd(raw);
+      if(cmd === 'open'){ const t = (parts[1]||'').replace('.js','').replace('.json','').replace('.ts','').replace('.md','').replace('.sh','');
+        if([...files].some(f=>f.dataset.file===t)){ openFile(t); line(`<span class="out">Opened <span class="hl">${t}</span>.</span>`);} else line(`<span class="out">no such tab: ${parts[1]||''}. try: about, experience, skills, projects, contact</span>`); return; }
+      if(COMMANDS[cmd]){ const out = COMMANDS[cmd](); if(out) line(out); }
+      else line(`<span class="out">command not found: <b>${cmd}</b> — type <b>help</b></span>`);
+    }
+    input.addEventListener('keydown', e => { if(e.key === 'Enter'){ run(input.value); input.value=''; } });
+
+    /* boot sequence — typewriter */
+    const boot = [
+      ['<span class="prompt">visitor@tobi</span>:<span class="path">~</span>$ <span class="cmd">whoami</span>', 0],
+      ['<span class="out"><b>Tobi Nathan Owonubi</b> · Software Engineer · AI / LLM</span>', 120],
+      ['<span class="prompt">visitor@tobi</span>:<span class="path">~</span>$ <span class="cmd">cat welcome.txt</span>', 220],
+      ['<span class="out">Welcome 👋 This portfolio is a workspace. Click the tabs, browse files,</span>', 120],
+      ['<span class="out">or type <b>help</b> below to drive it from here.</span>', 80],
+    ];
+    let bi = 0;
+    (function tick(){ if(bi >= boot.length){ input.focus(); return; } const [html, d] = boot[bi++]; line(html); setTimeout(tick, 360 + d); })();
+
+    window.addEventListener('click', e => { if(!e.target.closest('a, button, .tab, .file-i, input')) input.focus(); });
   </script>
 </body>
 </html>
